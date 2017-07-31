@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>AJAX Concept</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.TextBox("txtN", 0)
+    <button id="btnCalculate">Calcular</button><br />
+    <div id="lblMessage"></div>
+}
+
+@section Scripts{
+    <script type="text/javascript" >
+        $(function () {
+            $("#btnCalculate").on("click", function () {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("JsonFactorial")',
+                    data: { 'n': $('#txtN').val() },
+                    datatype: 'json',
+                    cache: false
+                }).success(function (data) {
+                    // Data es el  objeto que me devuelve este objeto, el objeto result.
+                    // tiene una propiedad que se llama factorial
+                    $("#lblMessage").html(data.Factorial);
+                })
+                .error(function (xhr, ajaxOptions, thrownError) {
+                    $("#lblMessage").html("An error was occurredd");
+                });
+                // No opera bien el JQUery IMP!!
+                return false;
+            });
+        });
+    </script>    
+}
+

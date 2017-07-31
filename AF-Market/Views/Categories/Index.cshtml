@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Categories</h2>
+<!-- No va a acceder directamente a bbdd -->
+
+@using (Html.BeginForm())
+{
+    <button id="btnGetCategories">Get Categories</button>
+    <button id="btnGetCategories">Get Category</button>
+    <button id="btnAddCategories">Add Category</button>
+    <button id="btnUpdateCategories">Update Category</button>
+    <button id="btnDeleteCategories">Delete Category</button>
+    <br /><br />
+    <input id="txtCategoryID" type="text" placeholder="Category ID" />
+    <input id="txtDescription" type="text" placeholder="Category Description" />
+    <br /><br />
+    <div id="lblMessage"></div>
+}
+
